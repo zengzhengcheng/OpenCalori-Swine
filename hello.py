@@ -93,7 +93,7 @@ def gettime(x):
     return datetime.fromtimestamp(time.mktime(a))
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self,parent=None):
-        super(MainWindow,self).__init__(parent)
+        super(MainWindow,self).__init__()
         self.setupUi(self)
         self.pushButton_selectsn.clicked.connect(self.getsnfilepath)
         self.pushButton_selectsw.clicked.connect(self.getswfilepath)
