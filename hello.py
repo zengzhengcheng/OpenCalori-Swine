@@ -77,8 +77,9 @@ def getvalue(dsn,dsw,jiange):
             else:
                 jiangemessage.append(f"{sntime}前{jiange}分钟内无对应室外数据，因此未计算该时间段的产热，如需调整，请增加时间间隔")
                 head = True
-            namecolumns = """时间差	O2浓度（%）	NH3浓度（ppm）	CH4浓度（ppm）	CO2浓度（ppm）	O2浓度（%）	NH3浓度（ppm）	CH4浓度（ppm）	CO2浓度（ppm）	小室温度（℃）	小室湿度（%）	排气流量（L/M）	仪表流量（L/M）	进气压力（Hpa）	小室压力（Hpa）	小室风速（m/s）	水蒸气压	流量L/M	呼吸室体积L	标准状况流量L/M	呼吸室标准容积L	氧含量L	氨气含量L	甲烷含量L	二氧化碳含量L	呼吸熵	HP产热 (kcal)
-            """.split("\t")
+            namecolumns = "时间差,O2浓度（%）,NH3浓度（ppm）,CH4浓度（ppm）,CO2浓度（ppm）,O2浓度（%）,NH3浓度（ppm）,CH4浓度（ppm）," \
+                          "CO2浓度（ppm）,小室温度（℃）,小室湿度（%）,排气流量（L/M）,仪表流量（L/M）,进气压力（Hpa）,小室压力（Hpa）,小室风速（m/s）,水蒸气压,流量L/M,呼吸室体积L," \
+                          "标准状况流量L/M,呼吸室标准容积L,氧含量L,氨气含量L,甲烷含量L,二氧化碳含量L,呼吸熵,HP产热 (kcal)".split(",")
             df.columns = namecolumns
         except Exception as e:
             print(e)
@@ -178,6 +179,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
             workbook = writer.book
             sheet_table = writer.sheets['sheet']
             sheet_table.set_column('A:A', 30)
+            sheet_table.write(0,0,"datetime")
             workfomat = workbook.add_format({
                 'fg_color': 'red',  # 单元格背景颜色
             })
@@ -186,7 +188,6 @@ class MainWindow(QMainWindow,Ui_MainWindow):
                 sheet_table.write(tubianmessage[i], 0, str(i), workfomat)
             workbook.close()
             writer.close()
-            writer.save()
             mname=name[:-5]+".txt"
             with open(mname,"w") as f:
                 for i in tubianmessage.keys():
