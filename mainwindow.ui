@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>236</height>
+    <height>464</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,29 +15,15 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_selectsw">
-      <property name="text">
-       <string>选择室外数据</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_jiange"/>
-    </item>
-    <item row="2" column="1">
+    <item row="5" column="1">
      <widget class="QPushButton" name="pushButton_selectsn">
       <property name="text">
        <string>选择室内数据</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>输出数据</string>
-      </property>
-     </widget>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_jiange"/>
     </item>
     <item row="0" column="0">
      <widget class="QLabel" name="label">
@@ -46,17 +32,93 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_xiugai">
-      <property name="text">
-       <string>修改时间间隔</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="1">
      <widget class="QLabel" name="label_jiange">
       <property name="text">
        <string>当前时间间隔10分钟</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>修改产热平均时间间隔</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>产热数据的平均时间间隔，默认为300秒，但是学校小室应该调整为150秒</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="2">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>输出数据</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>当前时间间隔300s</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QPushButton" name="pushButton_selectswall">
+      <property name="text">
+       <string>选择室外数据文件夹</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>呼吸商异常值上下限</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0" colspan="2">
+     <widget class="QScrollArea" name="scrollArea_tishi">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>780</width>
+         <height>167</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="pushButton_selectsnall">
+      <property name="text">
+       <string>选择室内数据文件夹</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="pushButton_selectsw">
+      <property name="text">
+       <string>选择室外数据</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton_xiugai">
+      <property name="text">
+       <string>修改时间间隔</string>
       </property>
      </widget>
     </item>
@@ -68,7 +130,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>
