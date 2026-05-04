@@ -6,132 +6,306 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>464</height>
+    <width>1060</width>
+    <height>780</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1020</width>
+    <height>720</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>数据处理系统</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="5" column="1">
-     <widget class="QPushButton" name="pushButton_selectsn">
-      <property name="text">
-       <string>选择室内数据</string>
-      </property>
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <property name="leftMargin"><number>24</number></property>
+    <property name="topMargin"><number>14</number></property>
+    <property name="rightMargin"><number>24</number></property>
+    <property name="bottomMargin"><number>18</number></property>
+    <property name="spacing"><number>14</number></property>
+
+    <!-- ========== 顶部标题栏 ========== -->
+    <item>
+     <layout class="QHBoxLayout" name="layout_titlebar">
+      <property name="spacing"><number>12</number></property>
+      <item>
+       <widget class="QLabel" name="label_app_title">
+        <property name="text"><string>数据处理系统</string></property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="spacer_title">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_language">
+        <property name="text"><string>EN / 中</string></property>
+        <property name="minimumSize"><size><width>110</width><height>34</height></size></property>
+        <property name="maximumSize"><size><width>130</width><height>34</height></size></property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- ========== 顶部分割线 ========== -->
+    <item>
+     <widget class="QFrame" name="line_top">
+      <property name="frameShape"><enum>QFrame::HLine</enum></property>
+      <property name="frameShadow"><enum>QFrame::Sunken</enum></property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_jiange"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>允许最长的时间间隔，默认10分钟，可以修改，超过间隔时间，中间产热不进行计算</string>
-      </property>
+
+    <!-- ========== 参数设置卡片 ========== -->
+    <item>
+     <widget class="QFrame" name="frame_params">
+      <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+      <layout class="QVBoxLayout" name="layout_params_outer">
+       <property name="leftMargin"><number>20</number></property>
+       <property name="topMargin"><number>16</number></property>
+       <property name="rightMargin"><number>20</number></property>
+       <property name="bottomMargin"><number>18</number></property>
+       <property name="spacing"><number>8</number></property>
+
+       <!-- 区块标题 -->
+       <item>
+        <widget class="QLabel" name="label_section_params">
+         <property name="text"><string>⚙ 参数设置</string></property>
+        </widget>
+       </item>
+
+       <!-- === 第一组：时间间隔 === -->
+       <!-- 描述文字（独占一行，不会被截断） -->
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text"><string>允许最长的时间间隔，默认10分钟，可以修改，超过间隔时间，中间产热不进行计算</string></property>
+         <property name="wordWrap"><bool>true</bool></property>
+        </widget>
+       </item>
+       <!-- 操作行：状态标签 + 输入框 + 按钮 -->
+       <item>
+        <layout class="QHBoxLayout" name="layout_jiange_row">
+         <property name="spacing"><number>12</number></property>
+         <item>
+          <widget class="QLabel" name="label_jiange">
+           <property name="text"><string>  当前时间间隔10分钟</string></property>
+           <property name="minimumSize"><size><width>180</width><height>0</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_jiange">
+           <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_jiange">
+           <property name="minimumSize"><size><width>240</width><height>34</height></size></property>
+           <property name="maximumSize"><size><width>360</width><height>34</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_xiugai">
+           <property name="text"><string> 修改时间间隔</string></property>
+           <property name="minimumSize"><size><width>150</width><height>34</height></size></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <!-- 间距 -->
+       <item>
+        <spacer name="spacer_gap1">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>6</height></size></property>
+        </spacer>
+       </item>
+
+       <!-- === 第二组：产热平均时间间隔 === -->
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text"><string>产热数据的平均时间间隔，默认为300秒，但是学校小室A1应该调整为150秒</string></property>
+         <property name="wordWrap"><bool>true</bool></property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_pingjun_row">
+         <property name="spacing"><number>12</number></property>
+         <item>
+          <widget class="QLabel" name="label_pingjun">
+           <property name="text"><string>  当前时间间隔300s</string></property>
+           <property name="minimumSize"><size><width>180</width><height>0</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_pingjun">
+           <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_pingjun">
+           <property name="minimumSize"><size><width>240</width><height>34</height></size></property>
+           <property name="maximumSize"><size><width>360</width><height>34</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_xiugaipingjun">
+           <property name="text"><string> 修改产热平均时间间隔</string></property>
+           <property name="minimumSize"><size><width>150</width><height>34</height></size></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <!-- 分割线 -->
+       <item>
+        <spacer name="spacer_gap2">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>4</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QFrame" name="line_params">
+         <property name="frameShape"><enum>QFrame::HLine</enum></property>
+         <property name="frameShadow"><enum>QFrame::Sunken</enum></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="spacer_gap3">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>4</height></size></property>
+        </spacer>
+       </item>
+
+       <!-- === 第三组：呼吸商异常值 === -->
+       <item>
+        <widget class="QLabel" name="label_qshangxiaxian">
+         <property name="text"><string>呼吸商异常值上限1.2，下限0.8</string></property>
+        </widget>
+       </item>
+
+       <!-- 上限行 -->
+       <item>
+        <layout class="QHBoxLayout" name="layout_shangxian_row">
+         <property name="spacing"><number>12</number></property>
+         <item>
+          <widget class="QPushButton" name="pushButton_qshangxian">
+           <property name="text"><string> 修改上限</string></property>
+           <property name="minimumSize"><size><width>120</width><height>34</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_qshangxian">
+           <property name="minimumSize"><size><width>0</width><height>34</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_limit_mid">
+           <property name="orientation"><enum>Qt::Horizontal</enum></property>
+           <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+           <property name="sizeHint" stdset="0"><size><width>30</width><height>0</height></size></property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_qxiaxian">
+           <property name="text"><string> 修改下限</string></property>
+           <property name="minimumSize"><size><width>120</width><height>34</height></size></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_qxiaxian">
+           <property name="minimumSize"><size><width>0</width><height>34</height></size></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+      </layout>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="label_jiange">
-      <property name="text">
-       <string>当前时间间隔10分钟</string>
-      </property>
+
+    <!-- ========== 数据选择卡片 ========== -->
+    <item>
+     <widget class="QFrame" name="frame_data">
+      <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+      <layout class="QVBoxLayout" name="layout_data_outer">
+       <property name="leftMargin"><number>20</number></property>
+       <property name="topMargin"><number>16</number></property>
+       <property name="rightMargin"><number>20</number></property>
+       <property name="bottomMargin"><number>18</number></property>
+       <property name="spacing"><number>12</number></property>
+
+       <item>
+        <widget class="QLabel" name="label_section_data">
+         <property name="text"><string>📂 数据选择</string></property>
+        </widget>
+       </item>
+
+       <item>
+        <layout class="QGridLayout" name="layout_data_grid">
+         <property name="horizontalSpacing"><number>14</number></property>
+         <property name="verticalSpacing"><number>10</number></property>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="pushButton_selectsw">
+           <property name="text"><string> 选择室外数据</string></property>
+           <property name="minimumSize"><size><width>0</width><height>42</height></size></property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="pushButton_selectsn">
+           <property name="text"><string> 选择室内数据</string></property>
+           <property name="minimumSize"><size><width>0</width><height>42</height></size></property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="pushButton_selectswall">
+           <property name="text"><string> 选择室外数据文件夹</string></property>
+           <property name="minimumSize"><size><width>0</width><height>42</height></size></property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="pushButton_selectsnall">
+           <property name="text"><string> 选择室内数据文件夹</string></property>
+           <property name="minimumSize"><size><width>0</width><height>42</height></size></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>修改产热平均时间间隔</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>产热数据的平均时间间隔，默认为300秒，但是学校小室应该调整为150秒</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0" colspan="2">
+
+    <!-- ========== 输出按钮 ========== -->
+    <item>
      <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>输出数据</string>
-      </property>
+      <property name="text"><string> 输出数据</string></property>
+      <property name="minimumSize"><size><width>0</width><height>50</height></size></property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>当前时间间隔300s</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="6" column="0">
-     <widget class="QPushButton" name="pushButton_selectswall">
-      <property name="text">
-       <string>选择室外数据文件夹</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>呼吸商异常值上下限</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0" colspan="2">
+
+    <!-- ========== 日志/提示滚动区域 ========== -->
+    <item>
      <widget class="QScrollArea" name="scrollArea_tishi">
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
+      <property name="minimumSize"><size><width>0</width><height>110</height></size></property>
+      <property name="widgetResizable"><bool>true</bool></property>
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>780</width>
-         <height>167</height>
-        </rect>
+        <rect><x>0</x><y>0</y><width>1008</width><height>108</height></rect>
        </property>
       </widget>
      </widget>
     </item>
-    <item row="6" column="1">
-     <widget class="QPushButton" name="pushButton_selectsnall">
-      <property name="text">
-       <string>选择室内数据文件夹</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QPushButton" name="pushButton_selectsw">
-      <property name="text">
-       <string>选择室外数据</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_xiugai">
-      <property name="text">
-       <string>修改时间间隔</string>
-      </property>
-     </widget>
-    </item>
+
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>33</height>
-    </rect>
+    <rect><x>0</x><y>0</y><width>1060</width><height>22</height></rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
