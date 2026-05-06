@@ -1,5 +1,7 @@
 # OpenCalori-Swine
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20051163.svg)](https://doi.org/10.5281/zenodo.20051163)
+
 OpenCalori-Swine is a desktop GUI tool for pig heat-production calculation.
 
 ## What It Does
